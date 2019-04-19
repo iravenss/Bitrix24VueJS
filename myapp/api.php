@@ -14,10 +14,12 @@ $application = new CApplication();
 if (!empty($_REQUEST)) {
 	 $application->start($_REQUEST);
 	$domain = $application->getDomain();
-	
+
 }
 $domain = $application->getDomain();
-
+$user_id = $application->getCurUserID();
+$user_name = $application->userName;
+$user_fullname = $application->userFullName;
 
 
 if (isset($_REQUEST['action'])) {
@@ -41,9 +43,11 @@ if (isset($_REQUEST['action'])) {
 		$points = array();
 		
 		while ($row = $result->fetch_assoc()) {
+			$row['USER'] = $application->getFullNameFromDB($row['ID_USER'],$domain,$conn);
 			array_push($points, $row);
 		}
 		$res['points'] = $points;
+		
 	}
 	
 	if ($action == 'create') {
@@ -53,8 +57,10 @@ if (isset($_REQUEST['action'])) {
 		$comment = $_POST['comment'];
 		//$domain = $_POST['domain'];
 		
+		$application->addUserToTable($user_id,$domain,$user_fullname,$conn);
 		
-		$result = $conn->query("INSERT INTO `b24_points` (`NAME`, `CORDS`, `COMMENT`, `PORTAL`) VALUES ('$name', '$cords', '$comment','$domain') ");
+		$result = $conn->query("INSERT INTO `b24_points` (`NAME`, `CORDS`, `ID_USER`, `COMMENT`, `PORTAL`) VALUES ('$name', '$cords','$user_id', '$comment','$domain') ");
+		
 		if ($result) {
 			$res['message'] = "Point Added successfully";
 		} else {
@@ -62,6 +68,8 @@ if (isset($_REQUEST['action'])) {
 			$res['message'] = "Insert Point fail";
 			
 		}
+		
+		
 	}
 	
 	

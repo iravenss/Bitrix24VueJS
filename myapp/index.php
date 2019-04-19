@@ -49,6 +49,7 @@ require_once("api.php");
 					<th>ID</th>
 					<th>Название</th>
 					<th>Комментарий</th>
+                    <th>Пользователь</th>
 					<th>-</th>
 					<th>-</th>
 					<th>Удалить</th>
@@ -57,6 +58,7 @@ require_once("api.php");
 					<td>{{point.ID}}</td>
 					<td>{{point.NAME}}</td>
 					<td>{{point.COMMENT}}</td>
+                    <td>{{point.USER}}</td>
 					<td class="cords">{{point.CORDS}}</td>
 					<td>
 						<!--<button @click="showingeditModal = true; selectUser(user)">Edit</button>-->
