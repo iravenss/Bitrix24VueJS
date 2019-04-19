@@ -7,6 +7,9 @@ createDealersOnMap = function (){
 		//$('input[type=radio][name=coord]').removeAttr('checked');
 		$('tr.the-point').each(function () {
 			cords = $(this).find('td.cords').text();
+			name_text = $(this).find('td.name').text();
+			user_text = $(this).find('td.user').text();
+			comment_text = $(this).find('td.comment').text();
 			console.log(cords);
 			if (cords.length > 0) {
 				var cord;
@@ -17,9 +20,19 @@ createDealersOnMap = function (){
 					{
 						balloonPanelMaxMapArea: 0,
 						preset: 'islands#darkOrangeDotIcon',
-						// openEmptyBalloon: true
+						 openEmptyBalloon: true
 					}
 				);
+				var newContent = "";
+				newContent = '<h4>'+ name_text +'</h4>';
+				newContent += '<p style="color: #c0c0c0; font-size: 11px;">пользователь:'+ user_text +'</p>';
+				newContent += '<p>'+ comment_text +'</p>';
+
+
+				myPlace.events.add('balloonopen', function (e) {
+
+					myPlace.properties.set('balloonContent', newContent);
+				});
 
 				myMap.geoObjects.add(myPlace);
 			}

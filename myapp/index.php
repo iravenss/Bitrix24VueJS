@@ -56,9 +56,9 @@ require_once("api.php");
 				</tr>
 				<tr v-for="point in points" class="the-point">
 					<td>{{point.ID}}</td>
-					<td>{{point.NAME}}</td>
-					<td>{{point.COMMENT}}</td>
-                    <td>{{point.USER}}</td>
+					<td class="name">{{point.NAME}}</td>
+					<td class="comment">{{point.COMMENT}}</td>
+                    <td class="user">{{point.USER}}</td>
 					<td class="cords">{{point.CORDS}}</td>
 					<td>
 						<!--<button @click="showingeditModal = true; selectUser(user)">Edit</button>-->
