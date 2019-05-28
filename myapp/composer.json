@@ -1,0 +1,10 @@
+{
+    "require": {
+        "mesilov/bitrix24-php-sdk": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+
+        }
+    }
+}
