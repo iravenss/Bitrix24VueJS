@@ -25,7 +25,7 @@ createDealersOnMap = function (){
 				);
 				var newContent = "";
 				newContent = '<h4>'+ name_text +'</h4>';
-				newContent += '<p style="color: #c0c0c0; font-size: 11px;">пользователь:'+ user_text +'</p>';
+				newContent += '<p style="color: #c0c0c0; font-size: 11px;">добавил:'+ user_text +'</p>';
 				newContent += '<p>'+ comment_text +'</p>';
 
 

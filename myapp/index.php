@@ -10,7 +10,7 @@ require_once("api.php");
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
-	<title>VueJS CRUD project By KK</title>
+	<title>CRM на карте</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
@@ -35,8 +35,8 @@ require_once("api.php");
 
 		<div class="">
 			<div class="crud_header">
-				<h1 class="left">VueJS CRUD WITH PHP AND MySQL</h1>
-				<button class="right addnew" @click="showingModal = true;">Add New</button>
+				<h1 class="left">CRM на карте</h1>
+				<button class="right addnew" @click="showingModal = true;">Добавить новую точку</button>
 				<div class="fix"></div>
 			</div>
 			
@@ -96,13 +96,13 @@ require_once("api.php");
 							</tr>
 						</table>
 						<div class="margin"></div>
-						<button class="center"  @click="showingModal = false; savePoint();" >Добавить точку</button>
+						<button class="center btn btn-primary"  @click="showingModal = false; savePoint();" >Добавить точку</button>
 					</div>
 				</div>
 			</div>
 		<div class="modal col-md-6" id="editmodal" v-if="showingeditModal">
 				<div class="modalheading">
-					<p class="left">Edit point</p>
+					<p class="left">Редактировать</p>
 					<p class="right close" @click="showingeditModal = false;">x</p>
 					<div class="fix"></div>
 				</div>
@@ -115,7 +115,7 @@ require_once("api.php");
 								<td><input type="text" placeholder="" v-model="clickedPoint.name"></td>
 							</tr>
 							<tr>
-								<th>cords</th>
+								<th>Координаты</th>
 								<th>:</th>
 								<td><input type="email" placeholder="s" v-model="clickedPoint.cords"></td>
 							</tr>
@@ -126,13 +126,13 @@ require_once("api.php");
 							</tr>
 						</table>
 						<div class="margin"></div>
-						<button class="center"  @click="showingeditModal = false; updatePoint()">Update Point</button>
+						<button class="center"  @click="showingeditModal = false; updatePoint()">Редактировать</button>
 					</div>
 				</div>
 			</div>
 			<div class="modal col-md-6" id="deletemodal" v-if="showingdeleteModal">
 				<div class="modalheading">
-					<p class="left">Удаалить точку</p>
+					<p class="left">Удалить точку</p>
 					<p class="right close" @click="showingdeleteModal = false;">x</p>
 					<div class="fix"></div>
 				</div>
@@ -140,13 +140,13 @@ require_once("api.php");
 					<div class="modalcontent">
 						
 						<div class="margin"></div>
-						<h3 class="center">Are you sure to Delete?</h3>
+						<h3 class="center">Вы уверены, что хотите удалить?</h3>
 						<div class="margin"></div>
 						<h4 class="center">{{clickedPoint.name}}</h4>
 						<div class="margin"></div>
 						<div class="col-md-6 center">
-							<button class="left" @click="showingdeleteModal = false; deletePoint()">YES</button>
-							<button class="right" @click="showingdeleteModal = false;">NO</button>
+							<button class="left" @click="showingdeleteModal = false; deletePoint()">Да</button>
+							<button class="right" @click="showingdeleteModal = false;">Нет</button>
 						</div>
 					</div>
 				</div>
