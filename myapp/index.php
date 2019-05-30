@@ -2,7 +2,7 @@
 //cho "<pre>"; print_r($_REQUEST); echo "</pre>";
 //echo "<br>";
 
-
+require_once __DIR__.'/vendor/autoload.php';
 require_once("api.php");
 
 ?>

@@ -38,7 +38,7 @@ class CApplication
 	
 	
 	public function getCurUserID () {
-		$obB24User = new \Bitrix24\Bitrix24User\Bitrix24User($this->arB24App);
+		$obB24User = new \Bitrix24\User\User($this->arB24App);
 		$arCurrentB24User = $obB24User->current();
 		$this->currentUser = $arCurrentB24User["result"]["ID"];
 		$this->userName = $arCurrentB24User["result"]["NAME"];
@@ -56,7 +56,7 @@ class CApplication
 	
 	public function getData () {
 		
-		$obB24User = new \Bitrix24\Bitrix24User\Bitrix24User($this->arB24App);
+		$obB24User = new \Bitrix24\User\User($this->arB24App);
 		$arCurrentB24User = $obB24User->current();
 		$this->currentUser = $arCurrentB24User["result"]["ID"];
 	
@@ -65,6 +65,9 @@ class CApplication
 	public function start ($requestArray) {
 		
 		$this->is_ajax_mode = isset($requestArray['action']);
+		if($requestArray['install'] == "Y"){
+			$this->is_ajax_mode = true;
+		}
 		
 		if (!$this->is_ajax_mode)
 			$this->arAccessParams = prepareFromRequest($requestArray);
@@ -101,6 +104,31 @@ class CApplication
 		if ($row = $result->fetch_assoc()) {
 			return $row['NAME'];
 		}
+	}
+	
+	public function installHandlers($handlers){
+		
+			$obB24placement = new Bitrix24\Placement\Placement($this->arB24App);
+			$host = $_SERVER['HTTP_HOST'];
+			$hfile = 'https://'.$host.APP_FOLDER.'/handler/map.php';
+			$hname = "Карта";
+			$hdesc = 'Место на карте на карте';
+			
+		if($handlers['leads'] == "Y"){
+			$obB24placement->bind('CRM_LEAD_LIST_MENU', $hfile, $hname, $hdesc);
+		}
+		if($handlers['deals'] == "Y"){
+			$obB24placement->bind('CRM_DEAL_LIST_MENU', $hfile, $hname, $hdesc);
+		}
+		if($handlers['companies'] == "Y"){
+			$obB24placement->bind('CRM_COMPANY_LIST_MENU', $hfile, $hname, $hdesc);
+		}
+		if($handlers['contacts'] == "Y"){
+			$obB24placement->bind('CRM_CONTACT_LIST_MENU', $hfile, $hname, $hdesc);
+		}
+		
+		die();
+		
 	}
 }
 

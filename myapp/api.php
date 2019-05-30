@@ -1,11 +1,8 @@
 <?php
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-require_once('bitrix24.php');
-require_once('bitrix24exception.php');
-require_once('bitrix24entity.php');
-require_once('bitrix24user.php');
+// ini_set('error_reporting', E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+require_once __DIR__.'/vendor/autoload.php';
 //require_once('bitrix24batch.php');
 require_once("tools.php");
 require_once("CApplication.php");
@@ -111,5 +108,15 @@ if (isset($_REQUEST['action'])) {
 	header("Content-type: application/json");
 	echo json_encode($res);
 	die();
+}
+if ($_REQUEST['install'] == "Y") {
+	
+	$application->installHandlers($_REQUEST['handlers']);
+	$res['FINISHED'] = "Y";
+	$res['error'] = false;
+	header("Content-type: application/json");
+	echo json_encode($res);
+	die();
+	
 }
  ?>
