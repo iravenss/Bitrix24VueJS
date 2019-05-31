@@ -52,17 +52,26 @@ if (isset($_REQUEST['action'])) {
 		$name    = $_POST['name'];
 		$cords   = $_POST['cords'];
 		$comment = $_POST['comment'];
+		if($_POST['ID'] && $_POST['PLACEMENT'] ){
+			switch ($_POST['PLACEMENT']) {
+				case "":
+					$contact_id = $_POST['ID'];
+					
+					break;
+			}
+			
+		}
 		//$domain = $_POST['domain'];
 		
 		$application->addUserToTable($user_id,$domain,$user_fullname,$conn);
 		
-		$result = $conn->query("INSERT INTO `b24_points` (`NAME`, `CORDS`, `ID_USER`, `COMMENT`, `PORTAL`) VALUES ('$name', '$cords','$user_id', '$comment','$domain') ");
+		$result = $conn->query("INSERT INTO `b24_points` (`NAME`, `CORDS`, `ID_USER`, `COMMENT`, `PORTAL`, `CONTACT_ID` ) VALUES ('$name', '$cords','$user_id', '$comment','$domain','$contact_id') ");
 		
 		if ($result) {
-			$res['message'] = "Point Added successfully";
+			$res['message'] = "Точка успешно добавлена";
 		} else {
 			$res['error']   = true;
-			$res['message'] = "Insert Point fail";
+			$res['message'] = "Не получилось добавить точку";
 			
 		}
 		
@@ -109,6 +118,7 @@ if (isset($_REQUEST['action'])) {
 	echo json_encode($res);
 	die();
 }
+//Установка
 if ($_REQUEST['install'] == "Y") {
 	
 	$application->installHandlers($_REQUEST['handlers']);

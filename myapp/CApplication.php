@@ -130,6 +130,20 @@ class CApplication
 		die();
 		
 	}
+	
+	public function getHandlerData($placement,$ID){
+		
+		$data = array();
+		if($placement == "CRM_CONTACT_LIST_MENU"){
+			$obB24contact = new Bitrix24\CRM\Contact($this->arB24App);
+			$user_info = $obB24contact->get($ID);
+			$user_info = $user_info['result'];
+			$link = '<a href="/crm/contact/details/'.$user_info['ID'].'/">'.$user_info['NAME']." ".$user_info['LAST_NAME'].'</a>';
+			
+		}
+		$data["H1"] = "Геоданные для ".$link;
+		return $data;
+	}
 }
 
 

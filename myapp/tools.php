@@ -3,6 +3,7 @@ define('APP_ID', 'local.5cab735531abc8.74858193');
 define('APP_SECRET_CODE', 'n4JteGWgaE7cKKQppL8X9e344Ca8TtdtA2c8Re7HQ9iRoHdBh3');
 define('APP_REG_URL', 'https://daydriver.ru/bx24/myapp/index.php');
 define('APP_FOLDER', '/bx24/myapp/');
+define('MAPS_API_KEY', 'fca40238-7aa6-4bb5-b055-7a4d62509696');
 
 require_once __DIR__.'/vendor/autoload.php';
 

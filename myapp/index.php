@@ -19,7 +19,7 @@ require_once("api.php");
             src="https://code.jquery.com/jquery-3.4.0.slim.min.js"
             integrity="sha256-ZaXnYkHGqIhqTbJ6MB4l9Frs/r7U4jlx7ir8PJYBqbI="
             crossorigin="anonymous"></script>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=fca40238-7aa6-4bb5-b055-7a4d62509696&lang=ru_RU"
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=<?=MAPS_API_KEY?>&lang=ru_RU"
             type="text/javascript">
     </script>
   

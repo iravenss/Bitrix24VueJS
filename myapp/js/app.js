@@ -127,7 +127,7 @@ var app = new Vue({
 				app.clickedPoint = point;
 			},
 
-			toFormData: function(obj){
+			toFormData: function(odbj){
 				var form_data = new FormData();
 			      for ( var key in obj ) {
 			          form_data.append(key, obj[key]);
